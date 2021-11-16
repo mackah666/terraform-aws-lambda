@@ -6,11 +6,11 @@ repos:
       - id: terraform_docs
       - id: terraform_validate
       - id: terraform_tflint
-      - id: checkov
-        args: [
-          "-d", ".",
-          "--skip-check", "CKV2_AWS_8",
-        ]
+      # - id: checkov
+      #   args: [
+      #     "-d", ".",
+      #     "--skip-check", "CKV2_AWS_8",
+      #   ]
 
       # - id: terrascan
       #   pass_filenames: false
