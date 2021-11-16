@@ -55,11 +55,11 @@ jobs:
         run: pip install pre-commit
       - name: Execute pre-commit
         # Run only validate pre-commit check on min version supported
-        if: ${{ matrix.directory !=  'examples' }}
+        if: ${{ matrix.directory !=  '.' }}
         run: pre-commit run terraform_validate --color=always --show-diff-on-failure --files ${{ matrix.directory }}/*
       - name: Execute pre-commit
         # Run only validate pre-commit check on min version supported
-        if: ${{ matrix.directory ==  ' examples' }}
+        if: ${{ matrix.directory ==  '.' }}
         run: pre-commit run terraform_validate --color=always --show-diff-on-failure --files $(ls *.tf)
 
   # Max Terraform version
