@@ -6,9 +6,9 @@ resource "aws_kms_key" "this" {
 }
 
 resource "aws_sqs_queue" "dlq" {
-  name = "tf-example-lambda-sqs-trigger-dlq"
+  name              = "tf-example-lambda-sqs-trigger-dlq"
   kms_master_key_id = aws_kms_key.this.id
-  
+
 }
 
 resource "aws_sqs_queue" "lambda_example" {
@@ -28,7 +28,7 @@ module "sqs_trigger" {
   runtime               = "java8"
   handler               = "example.Hello::handleRequest"
   create_empty_function = true
-  kms_key_arn = aws_kms_key.this.arn
+  kms_key_arn           = aws_kms_key.this.arn
 
   dead_letter_config = aws_sqs_queue.dlq.arn
 

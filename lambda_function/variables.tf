@@ -4,7 +4,7 @@ variable "aws_region" {
 }
 
 variable "vpc_config" {
-  type = map
+  type = map(any)
 
   default = {
     subnet_ids         = ""
@@ -13,7 +13,7 @@ variable "vpc_config" {
 }
 
 variable "tags" {
-  type    = map
+  type    = map(any)
   default = {}
 }
 
@@ -43,16 +43,16 @@ variable "filename" {
 }
 
 variable "environment_variables" {
-  type = map
+  type = map(any)
 }
 
 variable "source_mappings" {
-  type    = list
+  type    = list(any)
   default = []
 }
 
 variable "trigger_schedule" {
-  type = map
+  type = map(any)
 
   default = {
     enabled = false
@@ -60,7 +60,7 @@ variable "trigger_schedule" {
 }
 
 variable "sns_topic_subscription" {
-  type = map
+  type = map(any)
 
   default = {
     enabled = false
@@ -68,12 +68,12 @@ variable "sns_topic_subscription" {
 }
 
 variable "policies" {
-  type    = list
+  type    = list(any)
   default = []
 }
 
 variable "permissions" {
-  type = map
+  type = map(any)
 
   default = {
     enabled = false
@@ -81,7 +81,7 @@ variable "permissions" {
 }
 
 variable "bucket_trigger" {
-  type = map
+  type = map(any)
 
   default = {
     enabled = false
