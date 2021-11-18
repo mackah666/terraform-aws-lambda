@@ -1,4 +1,4 @@
-name: 'Terraform scanning'
+name: 'Terraform scanning Testing'
 on:
   push:
     branches:
