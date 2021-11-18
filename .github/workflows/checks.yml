@@ -1,0 +1,35 @@
+name: 'Terraform scanning'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      security-events: write
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - uses: terraform-linters/setup-tflint@v1
+        name: Setup TFLint
+        with:
+          tflint_version: latest
+
+      - name: Terraform lint
+        run: |
+          tflint --init 
+          tflint -f compact
+
+      - name: tfsec PR commenter
+        uses: tfsec/tfsec-pr-commenter-action@main
+        with:
+            github_token: ${{ github.token }}
